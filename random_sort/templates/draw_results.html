@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Draw Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #007BFF; /* Modern blue color */
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .start-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #007BFF; /* Modern blue color */
+            color: #fff;
+            font-size: 1.2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .start-button:hover {
+            background-color: #0056b3; /* Slightly darker shade on hover */
+        }
+
+        /* Style for images */
+        .person-image {
+            max-width: 200px;
+            max-height: 200px;
+            border-radius: 50%;
+            display: block;
+            margin: 0 auto 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Draw Results</h1>
+    <ul>
+        {% for chamber in chambers %}
+            <li>
+                <img src="/draw_results/media/tree.jpg" alt="{{ chamber.person.name }}" class="person-image">
+                {{ chamber.name }} - {{ chamber.person.name }}
+            </li>
+        {% endfor %}
+    </ul>
+
+    <div class="container">
+        <!-- Use Django's url template tag to generate the correct URL -->
+        <a href="{% url 'index' %}" class="start-button">Return</a>
+    </div>
+</body>
+</html>
